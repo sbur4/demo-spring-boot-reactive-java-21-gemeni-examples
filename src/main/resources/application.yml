@@ -1,0 +1,21 @@
+server:
+  port: ${SERVER_PORT:8787}
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  webflux:
+    base-path: ${SERVER_CONTEXT_PATH:/demo/api}
+
+logging:
+  pattern:
+    console: '%highlight(%-5p) | %magenta(%d{ISO8601}{GMT}) | %cyan(%c) | %yellow(%m%ex%n)'
+  level:
+    root: ${LOGGING_LEVEL_ROOT:INFO}
+    org:
+#      springframework.boot.web.servlet: TRACE
+      springframework.boot.web.reactive: TRACE
+    com:
+      example.demo: DEBUG
+#      google.genai: DEBUG
+    reactor.core: DEBUG
